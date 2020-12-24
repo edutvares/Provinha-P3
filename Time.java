@@ -59,15 +59,16 @@ public class Time{
 	}
     
     public List<Jogador> relacionarJogadores () {
-		List<Jogador> copy = new ArrayList<>();
-		copy.addAll(this.plantel);
+		List<Jogador> copy = new ArrayList<>(this.plantel);
+		//copy.addAll(this.plantel);
 		Collections.sort(copy);
-		return copy;
+
+		return copy.subList(0,11);
 	}
 
 	@Override
 	public String toString() {
-		return "----------Time---------- \nApelido: " + apelido + "\nNome: " + nome + "\nPlantel: \n\n" + plantel + "\nRelacionados: \n\n" + relacionados
+		return "----------------------------Time---------------------------- \nApelido: " + apelido + "\nNome: " + nome + "\nPlantel: \n\n" + plantel + "\nRelacionados: \n\n" + relacionados
 				+ "\nTecnico: " + tecnico + "\n\n\n\n";
     }
     

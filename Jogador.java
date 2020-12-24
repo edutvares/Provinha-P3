@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Jogador implements Comparable<Jogador>{
+public class Jogador extends Pessoa implements Comparable<Jogador>{
     private int numero;
     private String posicao;
     private int qualidade;
@@ -8,10 +8,14 @@ public class Jogador implements Comparable<Jogador>{
 	private boolean suspenso;
 	private boolean treino;
 
-    public Jogador() {
-    }
-    
-	public Jogador(int numero, String posicao, int qualidade, int cartoes, boolean suspenso, boolean treino) {
+	//* Construtores
+
+	public Jogador () {
+
+	}
+
+	public Jogador(int id, String nome, String dataNascimento, int numero, String posicao, int qualidade, int cartoes, boolean suspenso, boolean treino) {
+		super(id, nome, dataNascimento);
 		this.numero = numero;
 		this.posicao = posicao;
 		this.qualidade = qualidade;
@@ -19,6 +23,8 @@ public class Jogador implements Comparable<Jogador>{
 		this.suspenso = suspenso;
 		this.treino = treino;
 	}
+
+	//* get set
 
 	public int getNumero() {
 		return numero;
@@ -60,15 +66,20 @@ public class Jogador implements Comparable<Jogador>{
         this.suspenso = suspenso;
 	}
 	
-	public boolean istreino() {
+	public boolean isTreino() {
 		return treino;
 	}
 
-	public void settreino(boolean treino) {
+	public void setTreino(boolean treino) {
 		this.treino = treino;
 	}
 
-    //* -------------------------------------------------------
+	//* -------------------------------------------------------
+	
+	@Override
+	public String getNome() {
+		return "Jogador - " + nome;
+	}
 
     public boolean verificarCondicaoDejogo() {
         if( this.cartoes == 3 || this.suspenso) {
@@ -142,6 +153,7 @@ public class Jogador implements Comparable<Jogador>{
 				this.qualidade += 1;
 			}
 		}
+		this.treino = true;
 	}
 
 
@@ -151,10 +163,6 @@ public class Jogador implements Comparable<Jogador>{
 	}
 
 	public String toString() {
-		return "--- Jogador --- \n\nCartoes: " + this.cartoes + " \nNumero: " + this.numero + "\nPosicao: " + this.posicao + "\nQualidade: "
-				+ this.qualidade + "\nSuspenso: " + this.suspenso + "\n\n";
+		return "--- Jogador --- \n\n" + "Id: " + this.id + "\nNome: " + this.getNome() + "\nData de nascimento: " + this.dataNascimento + "\nCartoes: " + this.cartoes + " \nNumero: " + this.numero + "\nPosicao: " + this.posicao + "\nQualidade: " + this.qualidade + "\nSuspenso: " + this.suspenso + "\n\n";
 	}
-
-	
-	
 }
